@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📄 Document RAG Assistant
 
 > Transform any document into an interactive AI conversation using RAG (Retrieval Augmented Generation)
@@ -298,3 +299,6 @@ If you encounter any issues or have questions:
 ⭐ **Star this repository if you found it helpful!**
 
 Built with 🖤 using Streamlit and Google Gemini AI
+=======
+# -knowledgeX
+>>>>>>> e651041697757d9796ea4f1295d7c652d901cccd
