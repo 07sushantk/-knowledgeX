@@ -1,23 +1,13 @@
-<<<<<<< HEAD
-# 📄 Document RAG Assistant
+knowledgeX
 
 > Transform any document into an interactive AI conversation using RAG (Retrieval Augmented Generation)
-
-![Python](https://img.shields.io/badge/python-v3.11+-blue.svg)
-![Streamlit](https://img.shields.io/badge/streamlit-v1.32+-red.svg)
-![LangChain](https://img.shields.io/badge/langchain-latest-green.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-[![Issues](https://img.shields.io/github/issues/ZohaibCodez/document-qa-rag-system.svg)](https://github.com/ZohaibCodez/document-qa-rag-system/issues)
-![Last Commit](https://img.shields.io/github/last-commit/ZohaibCodez/document-qa-rag-system)
-[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://document-rag-system.streamlit.app)
-
 ## 🎯 Overview
 
-Document RAG Assistant is a Streamlit web application that enables you to have intelligent conversations with your document content. Simply upload a PDF or text file, and the app will process the document to create a searchable knowledge base that you can query using natural language.
+knowledgeX is a Streamlit web application that enables you to have intelligent conversations with your document content. Simply upload a PDF or text file, and the app will process the document to create a searchable knowledge base that you can query using natural language.
 
 ## 🌐 Live Demo
 
-Try it out here: [Document RAG Assistant Live Demo](https://document-rag-system.streamlit.app)
+https://07sushantk--knowledgex-app-kpj8xk.streamlit.app/
 
 ## ✨ Features
 
@@ -50,10 +40,6 @@ Try it out here: [Document RAG Assistant Live Demo](https://document-rag-system.
 
 ### 1. Clone the Repository
 
-```bash
-git clone https://github.com/ZohaibCodez/document-qa-rag-system.git
-cd document-qa-rag-system
-```
 
 ### 2. Install Dependencies
 
@@ -273,10 +259,6 @@ docker run -p 8501:8501 -v $(pwd):/app document-rag-dev
 - Reduce document size or restart the application
 - For Docker: increase memory limits
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - [Streamlit](https://streamlit.io/) for the amazing web framework
@@ -287,18 +269,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-If you encounter any issues or have questions:
 
-- Open an [Issue](https://github.com/ZohaibCodez/document-qa-rag-system/issues)
-- Check existing issues for solutions
-- Review the troubleshooting section above
-- Contact: [itxlevicodez@gmail.com](mailto:itxlevicodez@gmail.com)
-
----
 
 ⭐ **Star this repository if you found it helpful!**
 
 Built with 🖤 using Streamlit and Google Gemini AI
-=======
-# -knowledgeX
->>>>>>> e651041697757d9796ea4f1295d7c652d901cccd
