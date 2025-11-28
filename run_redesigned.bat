@@ -1,0 +1,9 @@
+@echo off
+echo Starting Document AI Assistant (Redesigned)...
+echo.
+echo Installing dependencies...
+pip install -r requirements_redesigned.txt
+echo.
+echo Starting application...
+streamlit run app_redesigned.py
+pause

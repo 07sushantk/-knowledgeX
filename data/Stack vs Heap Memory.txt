@@ -1,0 +1,574 @@
+0
+1
+00:00:00,690 --> 00:00:04,660
+In this video, we will learn about Static and Dynamic Memory Allocation.
+1
+
+2
+00:00:04,680 --> 00:00:10,500
+So, these are the topics that I'm going to cover in this video. I'll discuss about the memory, how a memory is
+2
+
+3
+00:00:10,500 --> 00:00:12,200
+utilized, how it looks like.
+3
+
+4
+00:00:12,390 --> 00:00:18,280
+Then, we will see how our program uses the main memory, how the program will utilize that main memory.
+4
+
+5
+00:00:18,280 --> 00:00:23,300
+Then we'll see static memory allocation, that is static allocation, and dynamic memory allocation.
+5
+
+6
+00:00:23,310 --> 00:00:24,950
+So these are the topics we'll discuss.
+6
+
+7
+00:00:24,990 --> 00:00:28,730
+Let us start by studying something about main memory.
+7
+
+8
+00:00:28,770 --> 00:00:32,440
+Let us discuss static vs dynamic memory allocation.
+8
+
+9
+00:00:32,520 --> 00:00:36,030
+So for that we should understand memory.
+9
+
+10
+00:00:36,030 --> 00:00:43,050
+Suppose this block shows a memory, this is a memory. So, the memory is divided into smaller addressable
+10
+
+11
+00:00:43,060 --> 00:00:47,890
+units that are called as bytes. So, memory is divided into bytes.
+11
+
+12
+00:00:47,970 --> 00:00:55,020
+So these boxes, these check-boxes, let us assume those are bytes, and this is the entire memory. A small picture I have
+12
+
+13
+00:00:55,020 --> 00:00:58,010
+taken, every byte is having its address.
+13
+
+14
+00:00:58,080 --> 00:01:01,320
+Let us say, the address of this is 0, and this is 1,
+14
+
+15
+00:01:01,320 --> 00:01:12,250
+This is 2, 3, 4, 5, and this will be 6, and 7, 8, 9, 10, 11, 12, 13, goes on.
+15
+
+16
+00:01:12,320 --> 00:01:17,690
+So I'm starting from the bottom, one thing to observe is that, diagram I have drawn as a 2-dimensional
+16
+
+17
+00:01:17,770 --> 00:01:22,650
+but the addresses are single dimension addresses, linear addresses.
+17
+
+18
+00:01:23,280 --> 00:01:28,620
+So, address will have just 1 value, not like coordinate system, (x,y), it will have a single
+18
+
+19
+00:01:28,620 --> 00:01:35,170
+value. So, addresses are linear. After this byte, this 5, then this is 6, and 7, and so on.
+19
+
+20
+00:01:35,280 --> 00:01:40,000
+So it depends on the size of the memory, every byte will have its own address.
+20
+
+21
+00:01:40,050 --> 00:01:47,580
+So if I take a bigger size of memory, let's say this a memory, and then, this corner most byte address
+21
+
+22
+00:01:47,580 --> 00:01:48,130
+is 0.
+22
+
+23
+00:01:48,360 --> 00:02:02,130
+So let us assume that this corner most byte's address is 65535, so total, 0 to 65535 makes 65536
+23
+
+24
+00:02:02,220 --> 00:02:03,920
+65536.
+24
+
+25
+00:02:04,020 --> 00:02:07,110
+So, total number of bytes are 65536.
+25
+
+26
+00:02:07,110 --> 00:02:12,000
+This is nothing but, 64*1024,
+26
+
+27
+00:02:12,000 --> 00:02:14,760
+So, this is 64 kilobytes.
+27
+
+28
+00:02:15,990 --> 00:02:23,100
+So, in my entire discussion, for the entire discussion of this subject, I'll be assuming that the size
+28
+
+29
+00:02:23,100 --> 00:02:27,930
+of the main memory is 64 kilobytes.
+29
+
+30
+00:02:27,990 --> 00:02:29,950
+Okay? Let us make this assumption.
+30
+
+31
+00:02:30,050 --> 00:02:36,090
+The size of the memory can be anything. Nowadays, we are using memory in GBs, like 4 GB, 8 GB memory we are using.
+31
+
+32
+00:02:36,370 --> 00:02:42,600
+But to understand, we have to take a small part of main memory, so I'm taking 64 kilobytes of memory.
+32
+
+33
+00:02:42,830 --> 00:02:48,140
+So, the 1st address is 0 bytes, and the last address is 65535.
+33
+
+34
+00:02:48,270 --> 00:02:50,640
+So total, 65536.
+34
+
+35
+00:02:50,640 --> 00:02:54,350
+That is, 64*1024, so it is 64 kilobytes.
+35
+
+36
+00:02:54,390 --> 00:03:00,540
+So this main memory is of 64 kilobytes. Every byte is having its address, like how I have shown you here.
+36
+
+37
+00:03:01,150 --> 00:03:02,090
+In our computers,
+37
+
+38
+00:03:02,160 --> 00:03:09,780
+If you have larger size of RAM, that is 4 GB, or 8 GB, that entire memory is not used as a single
+38
+
+39
+00:03:09,780 --> 00:03:11,840
+unit, but it is divided.
+39
+
+40
+00:03:11,970 --> 00:03:19,170
+It is divided into manageable pieces, that are called as segment. And, usually the size of a segment will
+40
+
+41
+00:03:19,170 --> 00:03:20,700
+be 64 kilobytes.
+41
+
+42
+00:03:22,770 --> 00:03:25,130
+So I'm talking about a segment.
+42
+
+43
+00:03:25,290 --> 00:03:31,090
+So in our discussion, always we'll assume that, the size of our memory is 64 KB,
+43
+
+44
+00:03:31,100 --> 00:03:38,800
+That is, we are talking about a segment. Now next, we have to understand how our program uses main memory.
+44
+
+45
+00:03:38,800 --> 00:03:42,180
+Now let us see, how our program utilizes main memory.
+45
+
+46
+00:03:42,180 --> 00:03:47,660
+This picture shows, this block, entire block, from this corner to this corner, as main memory.
+46
+
+47
+00:03:47,680 --> 00:03:56,280
+Assume that, this byte address is 0, and this corner most byte address is 65535, as I said we'll be taking
+47
+
+48
+00:03:56,280 --> 00:03:58,320
+one segment of memory and studying it.
+48
+
+49
+00:03:58,680 --> 00:04:05,200
+So, this entire main memory is divided into three sections and used by a program. So, I'll label the
+49
+
+50
+00:04:05,200 --> 00:04:12,540
+sections, one of the sections where the program resides is called as code section, and one of the
+50
+
+51
+00:04:12,540 --> 00:04:13,080
+sections,
+51
+
+52
+00:04:13,080 --> 00:04:14,450
+Usually this is the section,
+52
+
+53
+00:04:14,460 --> 00:04:22,800
+this portion, is called as Stack, and this remaining portion is called as Heap. But I'll just change the side,
+53
+
+54
+00:04:22,830 --> 00:04:25,740
+because it is easy for me to discuss, If I call
+54
+
+55
+00:04:25,800 --> 00:04:35,640
+this portion as stack, and this portion as heap. So, a program uses the main memory by dividing into
+55
+
+56
+00:04:35,640 --> 00:04:42,130
+three sections, code section, the stack, and heap. I'm showing stack at this place.
+56
+
+57
+00:04:42,190 --> 00:04:48,480
+Now, I'll explain how a program uses these three sections. So let's see, See here I have a program
+57
+
+58
+00:04:48,480 --> 00:04:51,400
+file on the hard disk, if I want to run this program,
+58
+
+59
+00:04:51,420 --> 00:04:56,970
+So this program, the machine code of the program, first it should be brought inside the main memory. So it
+59
+
+60
+00:04:56,970 --> 00:04:59,990
+is brought inside the code section. So, let us say,
+60
+
+61
+00:05:00,020 --> 00:05:04,990
+this is a program, or the machine code of a program.
+61
+
+62
+00:05:05,210 --> 00:05:08,480
+So, the area that is occupied by the program, in the main memory,
+62
+
+63
+00:05:08,480 --> 00:05:11,750
+That section is called as code section, that not be fixed.
+63
+
+64
+00:05:11,810 --> 00:05:13,310
+It depends on the size of program.
+64
+
+65
+00:05:13,340 --> 00:05:18,070
+So this is the code section, area where the machine code of the program is loaded.
+65
+
+66
+00:05:18,380 --> 00:05:24,110
+Now, once it is loaded, the CPU will start executing the program, and this program will utilize the remaining
+66
+
+67
+00:05:24,110 --> 00:05:27,600
+memory as divided into stack and heap.
+67
+
+68
+00:05:27,620 --> 00:05:31,190
+Now, let us learn, how this stack and heap works.
+68
+
+69
+00:05:31,190 --> 00:05:37,070
+So I will take the example code and I will show you, how stack memory is used, and how heap memory
+69
+
+70
+00:05:37,070 --> 00:05:37,640
+is used.
+70
+
+71
+00:05:38,030 --> 00:05:40,530
+I've taken an example code here.
+71
+
+72
+00:05:40,610 --> 00:05:43,750
+See this is my main function, it is having two variables.
+72
+
+73
+00:05:43,760 --> 00:05:46,410
+One is of type Integer, the other one is of type float.
+73
+
+74
+00:05:47,330 --> 00:05:59,800
+Now, I will assume here, listen carefully, I'm assuming here that integer takes 2 bytes and float takes
+74
+
+75
+00:05:59,960 --> 00:06:05,210
+4 bytes. In C C++ programming,
+75
+
+76
+00:06:05,670 --> 00:06:11,550
+Number of bytes taken by integer depends on the compiler, and the operating system, and the hardware, it
+76
+
+77
+00:06:11,550 --> 00:06:13,230
+depends on various things.
+77
+
+78
+00:06:13,260 --> 00:06:15,360
+So, we say mostly, it depends on the compiler.
+78
+
+79
+00:06:15,870 --> 00:06:24,310
+So integer may take 4 bytes also, 2 bytes also. OK? So 2 bytes is easy for explanation.
+79
+
+80
+00:06:24,440 --> 00:06:26,630
+So I'm taking integer as 2 bytes.
+80
+
+81
+00:06:26,720 --> 00:06:29,720
+If you take Turbo C, which is a 16 bit compiler,
+81
+
+82
+00:06:29,780 --> 00:06:31,860
+It takes 2 bytes for integer.
+82
+
+83
+00:06:32,090 --> 00:06:38,610
+Usually, if you use a Dev Studio, or CodeBlocks, or anything, then integer will take 4 bytes in that
+83
+
+84
+00:06:38,610 --> 00:06:38,900
+one.
+84
+
+85
+00:06:39,260 --> 00:06:41,890
+So it's a 32 bit compiler.
+85
+
+86
+00:06:42,230 --> 00:06:49,430
+So integer can take 2 bytes also, 4 bytes also in C C++, but I'm assuming integer takes 2 bytes and
+86
+
+87
+00:06:49,430 --> 00:06:51,130
+float takes 4 bytes.
+87
+
+88
+00:06:51,180 --> 00:06:55,900
+Now, let us come back to the point that we were discussing. We were discussing, how this heap memory and
+88
+
+89
+00:06:55,900 --> 00:07:02,630
+stack memory is used by the program. So, Let us see. I have these 2 variables, 2 bytes, and 4 bytes, total
+89
+
+90
+00:07:02,740 --> 00:07:08,540
+6 bytes of memory. In the program it is written that, it needs 6 bytes, so that 6 bytes of memory
+90
+
+91
+00:07:08,560 --> 00:07:14,030
+is allocated inside the stack, inside the stack.
+91
+
+92
+00:07:14,120 --> 00:07:19,280
+Let us show it as separately. So, this is 2 bytes, and this is 4 bytes.
+92
+
+93
+00:07:19,430 --> 00:07:22,070
+So these 6 bytes are given to the program.
+93
+
+94
+00:07:22,100 --> 00:07:23,850
+And this is nothing but a main function,
+94
+
+95
+00:07:23,850 --> 00:07:28,040
+I'm showing only main function.
+95
+
+96
+00:07:28,040 --> 00:07:35,360
+So, this block of memory that belongs to the main function is called as stack frame of main function,
+96
+
+97
+00:07:35,780 --> 00:07:46,270
+or it is also called as activation record of main function, activation record of main function.
+97
+
+98
+00:07:46,420 --> 00:07:52,180
+So one thing we learned that, whatever the variables you declare inside your program, or inside a function,
+98
+
+99
+00:07:52,540 --> 00:07:56,470
+the memory for those variables will be created inside the stack.
+99
+
+100
+00:07:56,470 --> 00:07:57,870
+This portion is a stack.
+100
+
+101
+00:07:59,080 --> 00:08:01,050
+So it is allocated inside the stack.
+101
+
+102
+00:08:01,210 --> 00:08:06,390
+So the portion of memory that is given to the function is called as activation record of that function.
+102
+
+103
+00:08:07,210 --> 00:08:12,610
+So, how the memory is allocated inside the stack, it depends whatever the variables you have inside
+103
+
+104
+00:08:12,610 --> 00:08:13,200
+a function.
+104
+
+105
+00:08:13,420 --> 00:08:20,830
+So, the size of the memory required by a function was decided at compile time only. Compiler will
+105
+
+106
+00:08:20,830 --> 00:08:23,400
+see that, this needs some bytes, and this needs some.
+106
+
+107
+00:08:23,400 --> 00:08:29,860
+So, it will beforehand decide that, this function needs so much memory, and that memory is obtained, once
+107
+
+108
+00:08:29,860 --> 00:08:33,190
+the programs start executing, it is obtained inside the stack.
+108
+
+109
+00:08:33,580 --> 00:08:36,860
+So, we say, this is static memory allocation.
+109
+
+110
+00:08:37,180 --> 00:08:38,710
+What is static here?
+110
+
+111
+00:08:38,710 --> 00:08:44,990
+How many bytes of memory is required by this function was it decided at combile time.
+111
+
+112
+00:08:45,120 --> 00:08:48,010
+So it is static. So, What is static?
+112
+
+113
+00:08:48,100 --> 00:08:54,070
+The size of the memory is a static value. When it was decided? compile time. So, when everything is done at
+113
+
+114
+00:08:54,070 --> 00:08:57,090
+compile time, or before run time, it is called static.
+114
+
+115
+00:08:57,190 --> 00:08:58,870
+So, this memory allocation is static.
